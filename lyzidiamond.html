@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+<style> 
+
+#mapid { height: 180px; 
+
+</style>
+
+<body>
+
+<div id="mapid"></div>
+
+<script>
+
+var mymap = L.map('mapid').serView([51.505, -0.09], 13);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: ''Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'kasborg.2m2p81ce'
+    accessToken: 'https://a.tiles.mapbox.com/v4/kasborg.2m2p81ce/page.html?access_token=pk.eyJ1Ijoia2FzYm9yZyIsImEiOiJjaXkxeXVjY3cwMDA4MndxajZpMmxmM3J5In0.qLd-s_nsp3eaT8k8qp7fLw#3/0.00/0.00'
+}).addTo(mymap);
+
