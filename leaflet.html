@@ -15,6 +15,10 @@
     width: 960px;
     height: 500px;
 }
+.custom .leaflet-popup-tip,
+.custom .leaflet-popup-content-wrapper {
+    background: #e93434
+    color: #ffffff;
 </style>
 
 </head>
@@ -34,9 +38,20 @@
     var firefoxIcon = L.icon({
         iconUrl: 'http://joshuafrazier.info/images/firefox.svg',
         iconSize: [38, 95], // size of the icon
+        popupAnchor: [0,-15]
         });
     
-    L.marker([43.64701, -79.39425], {icon: firefoxIcon}).bindPopup('Mozilla Toronto Office').addTo(map);
+    var customPopup = "Mozilla Toronto Offices<br/>
+    
+    <img src='http://joshuafrazier.info/images/maptime.gif' alt = 'maptime logo gif' width='350px'/>";
+    
+    var customOptions = 
+        {
+        'maxWidth': '500',
+        'classname' : 'custom'
+        }
+    
+    L.marker([43.64701, -79.39425], {icon: firefoxIcon}).bindPopup(customPopup).addTo(map);
      
 </script>
 
