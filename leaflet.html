@@ -28,31 +28,31 @@
     <div id="map"></div>
 
 <script>
-    
+
     var map = L.map('map', {scrollWheelZoom:false}).setView([43.64701, -79.39425], 15);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    
+
     var firefoxIcon = L.icon({
         iconUrl: 'http://joshuafrazier.info/images/firefox.svg',
         iconSize: [38, 95], // size of the icon
         popupAnchor: [0,-15]
         });
-    
+
     var customPopup = "Mozilla Toronto Offices<br/>
-    
-    <img src='http://joshuafrazier.info/images/maptime.gif' alt = 'maptime logo gif' width='350px'/>";
-    
-    var customOptions = 
+
+    <img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
+
+    var customOptions =
         {
         'maxWidth': '500',
         'className' : 'custom'
         }
-    
+
     L.marker([43.64701, -79.39425], {icon: firefoxIcon}).bindPopup(customPopup,customOptions).addTo(map);
-     
+
 </script>
 
 </body>
