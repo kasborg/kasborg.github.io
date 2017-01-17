@@ -31,11 +31,11 @@
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     
-    L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/nor.cgi", {
-        layers: 'nexrad-n0r-900913',
+    L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+    	layers: 'nexrad-n0r-900913',
         format: 'image/png',
         transparent: true,
-        attribution: "Weather data @ 2012 IEM Nexrad"
+        attribution: "Weather data © 2012 IEM Nexrad"
     }).addTop(map);
 </script>
 
