@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+
+<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+<style> 
+#mapid { height: 500px; }
+</style>
+</head>
+<body>
+
+    <div id='mapid'></div>
+   
+<script>
+    var mymap = L.map('mapid', {scrollWheelZoom:false}).setView([51.505, -0.09], 13);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'kasborg.2m2p81ce',
+        accessToken: 'pk.eyJ1Ijoia2FzYm9yZyIsImEiOiJjaXkxeXVjY3cwMDA4MndxajZpMmxmM3J5In0.qLd-s_nsp3eaT8k8qp7fLw'}).addTo(mymap);
+    
+    var madIcon = L.icon({
+        iconUrl: 'https://kasborg.github.io/madv.png',
+        shadowUrl: 'https://kasborg.github.io/madv_shad.png',
+        iconSize:    [50, 52.5],
+        shadowSize:  [50,52],
+        iconAnchor:  [0, 0],
+        shadowAnchor: [-20, 1],
+        popupAnchor:    [-3, -0.1]
+});
+    L.marker([51.5, -0.09], {icon: madIcon}).addTo(mymap).bindPopup("Madvillainy.");
+
+   
+    var myLines = [{
+        "type": "LineString",
+        "coordinates": [[51.50019, -0.11664], [51.49645, -0.1339], [51.50554, -0.18368]]
+    }, {
+        "type": "LineString",
+        "coordinates": [[51.5019, -0.02523], [51.48951, -0.02232], [51.48716, -0.00996]]
+    }];
+ 
+    var myStyle = {
+        "color": "#ff7800",
+        "weight": 5,
+        "opacity": 0.65
+    };
+
+    L.geoJSON(myLines, {
+        style: myStyle
+    }).addTo(mymap);
+
+    var circle = L.circle([51.508, -0.11], {color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 500}).addTo(mymap);
+    
+    var polygon = L.polygon([[51.509, -0.08], [51.503, -0.06], [51.51, -0.047]]).addTo(mymap);
+    
+    
+    circle.bindPopup("I am a circle.");
+    polygon.bindPopup("I am a polygon.");
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(mymap);
+}
+
+mymap.on('click', onMapClick);
+</script>
+
+</body>
+
+</html>
